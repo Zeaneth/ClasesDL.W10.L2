@@ -14,10 +14,11 @@ class Alumno
   def self.read_file(file_name = 'notas.txt')
     alumnos = []
     data = []
-    File.open(file_name, 'r') { |file| data = file.readlines }
+    File.open(file_name, 'r') { |file| data = file.readlines.map(&:chomp) }
     data.each do |alumno|
       alumnos << Alumno.new(*alumno.split(', '))
     end
+    # print alumnos
   end
 end
 
