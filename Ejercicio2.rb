@@ -7,7 +7,8 @@
 # - Implementar -mediante *Mixin*- el módulo en las clases *Rectangulo* y *Cuadrado*.
 # - Instanciar un *Rectangulo* y un *Cuadrado*.
 # - Imprimir el área y perímetro de los objetos instanciados utilizando el método del módulo implementado.
-
+require 'active_support'
+require 'active_support/core_ext'
 module Formula
   def perimetro
     resultado = (lado1 * 2 + lado2 * 2)
@@ -15,7 +16,11 @@ module Formula
   end
 
   def area
-    resultado = (lado1 * lado2)
+    if lado2.present?
+      resultado = (lado1 * lado2)
+    else
+      lado1**2
+    end
     # print resultado
   end
 end
@@ -38,7 +43,7 @@ class Cuadrado
   attr_accessor :lado1, :lado2
   def initialize(lado1)
     @lado1 = lado1
-    @lado2 = lado1
+    # @lado2 = lado1
   end
 
   def lados
